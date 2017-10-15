@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>book kart
+</title>
+</head>
+<script>
+function show(){
+                console.log("fin")
+		if(xhr.readyState==4 || xhr.status == 200){
+		console.log(xhr.responseText );
+		}
+	}
+function fun(){
+		xhr=new XMLHttpRequest();
+		
+		var n1 = document.getElementById("database").value;
+                         var completeUrl = "http://172.18.0.1:8080/?operation=createdb&name1="+n1;
+		xhr.open("GET",completeUrl,true);
+		//xhr.setRequestHeader("Access-control-request-method","GET");
+		xhr.onreadystatechange=show;
+		xhr.send();
+	}
+</script>
+<body>
+<form>
+<input type="text" name="database" id="database" placeholder="enter database"></input>
+<input type="button" value="create database" onclick="fun()"></input>
+<a href="modify.html">modify database</a>
+</form>
+
+
+</body>
+</html>

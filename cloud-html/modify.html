@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>bookkart
+</title>
+<script>
+
+dbused=null;
+
+function dbu(){
+        dbused=document.getElementById("database").value;
+        var s=document.getElementById("abc");
+    s.style.display="inline";
+}
+function show(){
+                console.log("fin")
+		if(xhr.readyState==4 || xhr.status == 200){
+		console.log(xhr.responseText );
+		res=JSON.parse(xhr.responseText);
+		d=document.createElement("div");d.innerHTML=res.body;
+		document.body.appendChild(d);
+		}
+	}
+function fun(event){
+		xhr=new XMLHttpRequest();
+		
+		
+		if(event.target.id=="get"){
+		        n1 = document.getElementById("tablename").value;
+		        completeUrl = "http://172.18.0.1:8080/?dbname="+dbused+"&operation=showtable&name1="+n1;
+		}
+		if(event.target.id=="create"){
+                         
+		        n1 = document.getElementById("tablename").value;
+		        completeUrl = "http://172.18.0.1:8080/?dbname="+dbused+"&operation=createtable&name1="+n1+"&col1="+document.getElementById("col1").value+"&col2="+document.getElementById("col2").value;
+		}
+
+		if(event.target.id=="insert1"){
+                         
+		        n1 = document.getElementById("tablename1").value;
+		        completeUrl = "http://172.18.0.1:8080/?dbname="+dbused+"&operation=insertintotable&name1="+n1+"&val1="+document.getElementById("val1").value+"&val2="+document.getElementById("val2").value;
+		}
+		
+		
+		console.log(completeUrl);
+		xhr.open("GET",completeUrl,true);
+		//xhr.setRequestHeader("Access-control-request-method","GET");
+		xhr.onreadystatechange=show;
+		xhr.send();
+	}
+	
+	
+</script>
+
+</head>
+
+<body>
+
+<input type="text" name="database" id="database" placeholder="enter database"></input>
+<input type="button" value="submit" onclick="dbu()"></input>
+</br>
+</br>
+
+<div id="abc" style="display:none" width="0px" height="0px">
+
+
+<input type="text" name="tablename" id="tablename" placeholder="enter table"></input></br></br>
+<input type="text" name="col1" id="col1" placeholder="enter column1"></input></br>
+<input type="text" name="col2" id="col2" placeholder="enter column2"></input></br>
+
+<input type="button" value="get" id="get" onclick="fun(event)"></input>
+<input type="button" value="create table" id="create" onclick="fun(event)"></input>
+
+
+
+
+</br></br>
+<input type="text" name="tablename" id="tablename1" placeholder="enter table"></input></br></br>
+<input type="text" id="val1" placeholder="enter column1 value"></input></br>
+<input type="text" id="val2" placeholder="enter column2 value"></input></br>
+<input type="button" value="insert" id="insert1" onclick="fun(event)"></input>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

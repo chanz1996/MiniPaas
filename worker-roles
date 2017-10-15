@@ -1,0 +1,5 @@
+worker role1 - 49170->8080/tcp   modest_curie 	komal/new-web-app2
+
+worker role2- 49171->8080/tcp   elastic_meninsky	komal/new-web-app3
+
+worker role3- 49172->8080/tcp   cranky_hoover	komal/new-web-app4
